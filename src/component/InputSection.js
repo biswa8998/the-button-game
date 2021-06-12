@@ -17,7 +17,12 @@ function InputSection(props) {
       return;
     }
 
-    if (value < 0 || value > 1001) {
+    if (
+      value.trim().length === 0 ||
+      value.indexOf(".") !== -1 ||
+      value < 1 ||
+      value > 1001
+    ) {
       setInputError(true);
       return;
     }
@@ -33,8 +38,11 @@ function InputSection(props) {
       <div>
         <input
           type="number"
+          placeholder="Number of buttons"
           min="0"
+          max="1000"
           value={value}
+          className="input-box"
           onChange={e => {
             setValue(e.target.value);
           }}
@@ -44,7 +52,7 @@ function InputSection(props) {
         />
       </div>
       <p style={errorStyle} className="input-error">
-        Only positive numbers between 0 and 1000 allowed
+        Only positive natural numbers between 1 and 1000 allowed
       </p>
       <button className="start-stop-button" onClick={toggleGameRunning}>
         {!props.gameRunning ? "Start" : "Stop"}

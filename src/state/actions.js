@@ -12,7 +12,6 @@ export const toggleGameState = payload => {
 };
 
 export const enableButton = payload => {
-  console.log("enableButton", payload);
   return {
     type: Types.ENABLE_BUTTON,
     payload

@@ -16,7 +16,7 @@ function appReducer(state = initialState, action) {
     case Types.TOGGLE_GAME_RUNNING:
       if (!newState.gameRunning) {
         newState.gameRunning = !newState.gameRunning;
-        newState.noOfGameButtons = action.payload;
+        newState.noOfGameButtons = parseInt(action.payload, 10);
         listOfButtons = Array.from({ length: action.payload }).fill(
           Types.DISABLED_UNCLICKED
         );
@@ -40,7 +40,12 @@ function appReducer(state = initialState, action) {
       listOfDisbledButtons.splice(action.payload, 1);
       newState.listOfButtons = listOfButtons;
       newState.listOfDisbledButtons = listOfDisbledButtons;
-      console.log(newState);
+      return newState;
+
+    case Types.DISABLE_BUTTON:
+      listOfButtons[action.payload] = Types.DISABLED_CLICKED;
+      newState.listOfButtons = listOfButtons;
+      newState.noOfGameButtons = newState.noOfGameButtons - 1;
       return newState;
     default:
       return newState;

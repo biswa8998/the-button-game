@@ -18,7 +18,7 @@ function GameButtons(props) {
    * disabled buttons array.
    */
   const randomlyEnableButtons = () => {
-    const randomTimeout = getRandomNumber(60, true);
+    const randomTimeout = getRandomNumber(5, true);
     timeoutId = setTimeout(() => {
       props.enableButton(
         getRandomNumber(props.listOfDisbledButtons.length - 1)
@@ -56,6 +56,9 @@ function GameButtons(props) {
               className="game-button"
               type={e}
               disabled={ENABLED_UNCLICKED !== e}
+              onClick={() => {
+                props.disableButton(i);
+              }}
             ></button>
           </div>
         );
@@ -81,7 +84,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    enableButton: data => dispatch(Actions.enableButton(data))
+    enableButton: data => dispatch(Actions.enableButton(data)),
+    disableButton: data => dispatch(Actions.disableButton(data))
   };
 };
 

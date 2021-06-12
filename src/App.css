@@ -26,6 +26,18 @@ button:hover {
   flex-direction: column;
 }
 
+div.instructions {
+  font-size: 12px;
+}
+
+div.instructions p {
+  margin: 0px;
+}
+
+.input-box {
+  width: 150px;
+}
+
 .input-error {
   color: red;
   margin: 2px;
@@ -54,4 +66,31 @@ button:hover {
 
 .game-button[type="ENABLED_UNCLICKED"] {
   background-color: red;
+}
+
+.game-button[type="DISABLED_CLICKED"] {
+  background-color: blue;
+}
+
+.popup-backdrop {
+  position: fixed;
+  top: 0px;
+  background-color: #6b69696e;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-wrapper {
+  width: 250px;
+  background-color: #404040;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0px 0px 12px 10px #a7a7a7db;
 }
