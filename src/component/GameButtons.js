@@ -68,16 +68,10 @@ function GameButtons(props) {
 }
 
 const mapStateToProps = state => {
-  const {
-    listOfButtons,
-    gameRunning,
-    noOfGameButtons,
-    listOfDisbledButtons
-  } = state;
+  const { listOfButtons, gameRunning, listOfDisbledButtons } = state;
   return {
     listOfButtons,
     gameRunning,
-    noOfGameButtons,
     listOfDisbledButtons
   };
 };

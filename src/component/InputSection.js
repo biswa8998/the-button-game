@@ -17,6 +17,10 @@ function InputSection(props) {
       return;
     }
 
+    /**
+     * If the value is empty string or decimal or < 1 and > 1000,
+     * the validation will fail.
+     */
     if (
       value.trim().length === 0 ||
       value.indexOf(".") !== -1 ||
@@ -42,6 +46,7 @@ function InputSection(props) {
           min="0"
           max="1000"
           value={value}
+          disabled={props.gameRunning}
           className="input-box"
           onChange={e => {
             setValue(e.target.value);
@@ -67,6 +72,7 @@ const mapStateToProps = state => {
     gameRunning
   };
 };
+
 const mapDispatchToProps = dispatch => {
   return {
     toggleGameState: data => dispatch(Actions.toggleGameState(data))

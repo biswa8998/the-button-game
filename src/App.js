@@ -6,6 +6,12 @@ import * as Actions from "./state/actions";
 import "./App.css";
 
 function App(props) {
+  /**
+   * noOfGameButtons is useful here because this will actually confirm whether
+   * user has made all the button blue. We cannot use listOfDisbledButtons for
+   * checking the same as there could be time where all the buttons are enabled
+   * but user has not made all of them blue
+   */
   const { gameRunning, noOfGameButtons, toggleGameState } = props;
   return (
     <div className="App">
@@ -29,7 +35,10 @@ function App(props) {
       {/**
         Main body of the game
        */}
-      <div className="app-container">
+      <div className="top-container">
+        {/**
+         Section to take input from user
+       */}
         <InputSection />
         {!gameRunning ? (
           <p>Enter a positive number in the box and click START</p>
@@ -37,7 +46,12 @@ function App(props) {
           <p>To end the game, click STOP</p>
         )}
       </div>
+
+      {/**
+        Grid of buttons
+       */}
       <GameButtons />
+
       {/**
         pop up on game end
        */}
